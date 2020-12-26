@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, Divider, Grid, Typography } from '@material-ui/core'
 import React from 'react'
+import Form from './Form/Form'
 import useStyles from './main.styles'
 
 const Main = () => {
@@ -17,7 +18,7 @@ const Main = () => {
                     </Typography>
                      
                     <Divider className={classes.divider} />
-                    {/* form */}
+                    <Form />
                 </CardContent>
 
                    
