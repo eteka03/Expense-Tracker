@@ -1,11 +1,14 @@
+import React, { useContext } from "react";
 import { Grid } from "@material-ui/core";
-import React from "react";
 import Details from "./components/Details/Details";
 import useStyles from "./App.style";
 import Main from "./components/Main/Main";
+import { ExpenseContext } from "./context/context";
 
 const App = () => {
   const classes = useStyles();
+  const globalState = useContext(ExpenseContext);
+
   return (
     <div>
       <Grid
