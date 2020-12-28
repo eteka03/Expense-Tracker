@@ -5,13 +5,11 @@ import useStyles from './List.styles'
 import { ExpenseContext } from '../../../context/context'
 const List = () => {
     const classes = useStyles()
-    const [transactions , setTransactions] = useState([
-        {id:1 ,type: "Income" , category:'Home' ,date: new Date() , amount: 50},
-        {id:2 ,type: "Expense" , category:'Business' ,date: new Date() , amount: 90},
-        {id:3 ,type: "Income" , category:'school' ,date: new Date() , amount: 170}
-    ])
+    
 
-   const {deleteTransaction} = useContext(ExpenseContext)
+    const {transactions , deleteTransaction} = useContext(ExpenseContext)
+
+   
     return (
         <MuiList dense={false} className={classes.list}>
             {transactions.map(transaction => (
@@ -22,10 +20,10 @@ const List = () => {
                                 <MoneyOff />
                             </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={transaction.category} secondary={`$ ${transaction.amount} - ${transaction.date.toLocaleDateString()}`} />
+                        <ListItemText primary={transaction.category} secondary={`$ ${transaction.amount} - ${transaction.date}`} />
                     
                     <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete" onClick={()=>{}}>
+                        <IconButton  edge="end" aria-label="delete" onClick={() => deleteTransaction(transaction.id)}>
                             <Delete />
 
                         </IconButton>
