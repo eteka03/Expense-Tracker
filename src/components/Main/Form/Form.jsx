@@ -4,10 +4,11 @@ import { ExpenseContext } from '../../../context/context'
 import {v4 as uuidv4} from 'uuid'
 import useStyles from './Form.styles'
 import { expenseCategories, incomeCategories } from '../../../constants/categorie'
+import formatDate from '../../../utils/formatDate'
 
 const Form = () => {
     const classes = useStyles()
-    const initialState = {type:"Income" , category:"business" , amount:50 , date: new Date()}
+    const initialState = {type:"Income" , category:"business" , amount:50 , date: formatDate(new Date())}
     const {addTransaction} = useContext(ExpenseContext)
 
     const [formData, setFormData] = useState(initialState)
@@ -16,9 +17,11 @@ const Form = () => {
     const handleChange = e => {
         const {value , name} = e.target
 
-        setFormData({...formData , [name]: value})
+        name === "date" ? setFormData({...formData , [name]: formatDate(value)}) : setFormData({...formData , [name]: value})
+
+        
    
-        console.log("formData",formData)
+       
     }
 
     const createTransaction =  () => {
