@@ -26,7 +26,7 @@ const Form = () => {
 
     const createTransaction =  () => {
         const transaction = {...formData , amount: Number(formData.amount) , id: uuidv4()}
-
+        console.log("transaction" , transaction)
         addTransaction(transaction) ; 
         setFormData(initialState)
     } 
@@ -61,7 +61,7 @@ const Form = () => {
                 <TextField name="amount" label="Amount" type="number" fullWidth onChange={handleChange} value={formData.amount} /> 
             </Grid>
             <Grid item xs={6}>
-                <TextField name="date" value={formData.date} onChange={handleChange} label="Date" type="date" fullWidth /> 
+                <TextField name="date"  onChange={handleChange} label="Date" type="date" fullWidth /> 
             </Grid>
             <Button onClick={createTransaction} className={classes.button} variant="outlined" color="primary" fullWidth>Create</Button>
             

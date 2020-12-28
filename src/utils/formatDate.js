@@ -1,7 +1,7 @@
 const formatDate = (date) => {
   const theD = new Date(date);
   let month = `${theD.getMonth() + 1}`;
-  let day = `${theD.getDate()}`;
+  let day = `${theD.getDate() + 1}`;
   const year = theD.getFullYear();
 
   if (month.length < 2) {
