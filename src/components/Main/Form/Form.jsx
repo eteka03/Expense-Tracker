@@ -3,6 +3,7 @@ import React , {useState ,useContext} from 'react'
 import { ExpenseContext } from '../../../context/context'
 import {v4 as uuidv4} from 'uuid'
 import useStyles from './Form.styles'
+import { expenseCategories, incomeCategories } from '../../../constants/categorie'
 
 const Form = () => {
     const classes = useStyles()
@@ -11,7 +12,7 @@ const Form = () => {
 
     const [formData, setFormData] = useState(initialState)
     
-    
+    const selectedCategories = formData.type  === "Income" ? incomeCategories : expenseCategories
     const handleChange = e => {
         const {value , name} = e.target
 
@@ -40,7 +41,7 @@ const Form = () => {
                     <Select name="type" value={formData.type} onChange={handleChange}>
                         <MenuItem value="Income">Income</MenuItem>
                          <MenuItem value="Expense">Expenses</MenuItem>
-
+                        
                     </Select>
                 </FormControl>
             </Grid>
@@ -48,8 +49,8 @@ const Form = () => {
                 <FormControl fullWidth>
                     <InputLabel>Category</InputLabel>
                     <Select name="category" value={formData.category} onChange= { handleChange}>
-                        <MenuItem value="business">Business</MenuItem>
-                        <MenuItem value="salary">Salary</MenuItem>
+                        
+                        {selectedCategories.map(cat => <MenuItem key={cat.type} value={cat.type}>{cat.type}</MenuItem>)}
                     </Select>
                 </FormControl>
             </Grid>
