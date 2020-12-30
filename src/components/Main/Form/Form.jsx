@@ -66,6 +66,7 @@ const Form = () => {
     }
 
     const createTransaction =  () => {
+        if(Number.isNaN(Number(formData.amount)) || !formData.date.includes("-")) return ;
         const transaction = {...formData , amount: Number(formData.amount) , id: uuidv4()}
         console.log("transaction" , transaction)
         addTransaction(transaction) ; 
