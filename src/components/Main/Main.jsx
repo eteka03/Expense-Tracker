@@ -1,17 +1,19 @@
-import { Card, CardContent, CardHeader, Divider, Grid, Typography } from '@material-ui/core'
-import React from 'react'
+import { Card , CardContent, CardHeader, Divider, Grid, Typography } from '@material-ui/core'
+import React , {useContext} from 'react'
+import { ExpenseContext } from '../../context/context'
 import Form from './Form/Form'
 import List from './List/List'
 import useStyles from './main.styles'
 
 const Main = () => {
    const classes = useStyles()
+   const {totalBalance} = useContext(ExpenseContext)
     return (
         <Card className={classes} >
             <CardHeader title="Expense Tracker" subheader="Powered by speechly"/>
                 <CardContent className={classes.cartContent}>
                     <Typography variant="h5" align="center">
-                        Total balance $100
+                        Total balance {totalBalance}
                     </Typography>
                     <Typography variant="subtitle1" style={{lineHeight:'1.5em' , margintop:'20px'}}>
                         {/* InfoCard ...*/}

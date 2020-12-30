@@ -51,11 +51,13 @@ const Form = () => {
                         break;
                 }
             })
-        }     
 
-        if(segment.isFinal && formData.amount && formData.type && formData.category && formData.date){
+            if(segment.isFinal && formData.amount && formData.type && formData.category && formData.date){
             createTransaction();
         }
+        }     
+
+        
         
     }, [segment])
 
