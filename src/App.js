@@ -3,11 +3,14 @@ import { Grid } from "@material-ui/core";
 import Details from "./components/Details/Details";
 import useStyles from "./App.style";
 import Main from "./components/Main/Main";
-import { ExpenseContext } from "./context/context";
+import {
+  PushToTalkButton,
+  PushToTalkButtonContainer,
+  ErrorPanel,
+} from "@speechly/react-ui";
 
 const App = () => {
   const classes = useStyles();
-  const globalState = useContext(ExpenseContext);
 
   return (
     <div>
@@ -29,6 +32,10 @@ const App = () => {
           <Details title="Expense" />
         </Grid>
       </Grid>
+      <PushToTalkButtonContainer>
+        <PushToTalkButton />
+        <ErrorPanel />
+      </PushToTalkButtonContainer>
     </div>
   );
 };
